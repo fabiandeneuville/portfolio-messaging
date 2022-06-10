@@ -4,6 +4,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 // DATABASE CONNECTION
 require('dotenv').config();
@@ -31,6 +32,16 @@ app.use(helmet({
         policy: "same-site"
     }
 }))
+
+// APP CALLS LIMIT
+const apiCallLimiter = rateLimit({
+    windowMs: 10 * 60 * 1000,
+    max: 60,
+    standardHeaders: true,
+    legacyHeaders: false
+})
+
+app.use('/api/', apiCallLimiter);
 
 // ROUTERS
 const userRoutes = require('./routes/user');
