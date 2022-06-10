@@ -65,7 +65,7 @@ If all goes well, the following messages appear in the terminal:
 
 ## Routes
 
-| VERB   | ACTION                | AUTHENTICATED | ENDPOINT          | REQUEST BODY                                                                                   | RESPONSE                                |
+| VERB   | ACTION                | AUTH | ENDPOINT          | REQUEST BODY                                                                                   | RESPONSE                                |
 |--------|-----------------------|---------------|-------------------|------------------------------------------------------------------------------------------------|-----------------------------------------|
 | LOGIN  | Login                 | NO            | /api/login        | { "email" : String, "password": String }                                                       | { "userId" : String, "token" : String } |
 | POST   | Post message          | NO            | /api/messages     | { "name" : String, "email" : String, "phone" : String, "subject" : String, "content" : String} | { api message }                         |
