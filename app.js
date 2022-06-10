@@ -12,8 +12,8 @@ const dbUserName = process.env.dbUserName;
 const dbPassword = process.env.dbPassword;
 
 mongoose.connect(`mongodb+srv://${dbUserName}:${dbPassword}@cluster0.12gfd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`)
-.then(() => console.log('Connexion à la base de données réussie !'))
-.catch(() => console.log('Connexion à la base de données échouée !'))
+.then(() => console.log('Connected to MongoDB database !'))
+.catch(() => console.log('Connection to MongoDB database failed !'))
 
 // APP SETTINGS
 const app = express();
