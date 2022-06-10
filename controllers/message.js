@@ -1,22 +1,45 @@
 // MESSAGE CONTROLLER CONFIGURATION
 
+const Joi = require('joi');
+
 const Message = require('../models/message');
 
 // POST MESSAGE
 exports.postMessage = (req, res, next) => {
     let options = {weekday: "long", year: "numeric", month: "long", day: "numeric"}
     let date = new Date;
-    const message = new Message({
-        date: date.toLocaleDateString("fr-FR", options),
-        name: req.body.name,
-        email: req.body.email,
+
+    const schema = Joi.object().keys({
+        name: Joi.string().min(2).max(50).pattern(/^[a-zéèôöîïûùüç' -]{2,50}$/i).required(),
+        email: Joi.string().email().required(),
+        phone: Joi.string().pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/).allow(''),
+        subject: Joi.string().allow(''),
+        content: Joi.string().min(5).required()
+    })
+
+    const result = schema.validate({
+        name: req.body.name, 
+        email: req.body.email, 
         phone: req.body.phone,
         subject: req.body.subject,
-        content: req.body.content,
+        content: req.body.content
     })
-    message.save()
-    .then(() => res.status(201).json({message: "Message posted !"}))
-    .catch(error => res.status(400).json({error}));
+
+    if(result.error){
+        return res.status(400).json({message: "An error occured !" + ' ' + result.error})
+    } else {
+        const message = new Message({
+            date: date.toLocaleDateString("fr-FR", options) + ' à ' + date.toLocaleTimeString("fr-FR"),
+            name: req.body.name,
+            email: req.body.email,
+            phone: req.body.phone,
+            subject: req.body.subject,
+            content: req.body.content,
+        })
+        message.save()
+        .then(() => res.status(201).json({message: "Message posted !"}))
+        .catch(error => res.status(400).json({error}));
+    }
 };
 
 // GET ALL MESSAGES
