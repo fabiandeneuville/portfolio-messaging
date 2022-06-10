@@ -2,6 +2,29 @@
 
 A simple API to handle messages submited on my portfolio
 
+## Stack
+- Node.JS
+- Express
+- MongoDB
+
+## Dependencies
+- Dotenv
+- Helmet
+- Jsonwebtoken
+- Mongoose
+- Nodemon
+
+## Installation
+
+### 1. Install dependencies
+
+### 2. Create database
+
+### 3. Set environment variables
+
+### 4. Launch
+
+
 ## Routes
 
 | VERB   | ACTION                | AUTHENTICATED | ENDPOINT          | REQUEST BODY                                                                                   | RESPONSE                                |
