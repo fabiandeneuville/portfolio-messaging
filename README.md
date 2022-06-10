@@ -8,6 +8,7 @@ A simple API to handle messages submited on my portfolio
 - MongoDB
 
 ## Dependencies
+- Express-rate-limit
 - Dotenv
 - Helmet
 - Jsonwebtoken
