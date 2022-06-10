@@ -17,4 +17,4 @@ module.exports = (req, res, next) => {
     } catch (error) {
         res.status(403).json({ message: "Invalid authentication !" });
     }
-};;
+};
