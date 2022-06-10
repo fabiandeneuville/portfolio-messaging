@@ -54,6 +54,11 @@ Launch the local server with :
 nodemon server
 ````
 
+If all goes well, the following messages appear in the terminal:
+
+**Listening on port 3000**
+
+**Connected to MongoDB database !**
 
 
 ## Routes
