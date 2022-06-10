@@ -6,7 +6,7 @@ const messageSchema = mongoose.Schema({
     date: {type: String, required: true},
     name: {type: String, required: true},
     email: {type: String, required: true},
-    phone: {type: Number},
+    phone: {type: String},
     subject: {type: String},
     content: {type: String, required: true},
     processed: {type: Boolean, required: true, default: false}   
