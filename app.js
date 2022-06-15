@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 
 app.use(helmet({
     crossOriginRessourcePolicy: {
-        policy: "same-site"
+        policy: "cross-origin"
     }
 }))
 
